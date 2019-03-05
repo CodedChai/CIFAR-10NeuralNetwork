@@ -46,6 +46,7 @@ for image in img_array:
 
 # Features, basically just the RGB data
 X = np.array(X).reshape(-1, 32, 32, 3)
+y = np.array(y).reshape(-1, 1)
 
 # Let's reconfirm that the shape looks right (any number of images, 32 pixels by 32 pixels with 3 RGB values)
 print(X.shape)
