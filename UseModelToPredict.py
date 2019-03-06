@@ -9,17 +9,17 @@ def prepare(filepath):
     img_array = cv2.imread(filepath)
     img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2RGB)
     new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
-    return new_array.reshape(-1, IMG_SIZE, IMG_SIZE, 3)
+    return new_array.reshape(-1, IMG_SIZE, IMG_SIZE, 3)/255.0
 
 
 model = tf.keras.models.load_model("CNN.model")
 
-prediction = model.predict([prepare('cat.jpg')])
-print(prediction)
+prediction = model.predict([prepare('dog.jpg')])
+print(CATEGORIES[np.argmax(prediction)])
 
 prediction = model.predict([prepare('cat.jpg')])
-print(prediction)
+print(CATEGORIES[np.argmax(prediction)])
 
 prediction = model.predict([prepare('bird6.png')])
-print(prediction)
+print(CATEGORIES[np.argmax(prediction)])
 #print(CATEGORIES[int(prediction[0])])

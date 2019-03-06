@@ -55,11 +55,11 @@ for dense_layer in dense_layers:
                 model.add(Dense(10)) # Output layer
                 model.add(Activation("softmax"))
 
-                model.compile(loss="categorical_crossentropy",
+                model.compile(loss="sparse_categorical_crossentropy",
                                 optimizer="rmsprop",
-                                metrics=['categorical_accuracy'])
+                                metrics=['sparse_categorical_accuracy'])
 
 
-                model.fit(X, categoricalY, batch_size = 64, epochs=13, validation_split=0.2, callbacks=[tensorboard], shuffle=True)
+                model.fit(X, y, batch_size = 64, epochs=17, validation_split=0.2, callbacks=[tensorboard], shuffle=True)
 
-              #  model.save("CNN.model")
+                model.save("CNN.model")
